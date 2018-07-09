@@ -4,10 +4,11 @@ from unittest.mock import patch
 
 class TestOpenFoodFactsAPI(TestCase):
 
-    @patch('app.OpenFoodFactsAPI')
-    def test_count_product_numb(self, mock_OpenFoodFactsAPI):
+    @patch('app.json')
+    @patch('app.urllib')
+    def test_count_product_numb(self, mock_urllib, mock_json):
 
-        mock_OpenFoodFactsAPI.get_product_from_api.return_value = {
+        mock_json.loads.return_value = {
             "count": 6,
             "skip": 0,
             "page_size": "150",
