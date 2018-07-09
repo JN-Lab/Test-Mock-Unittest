@@ -1,4 +1,4 @@
-from app import OpenFoodFactsAPI
+import app
 from unittest import TestCase
 from unittest.mock import patch
 
@@ -41,5 +41,5 @@ class TestOpenFoodFactsAPI(TestCase):
         }
 
         #mock_OpenFoodFactsAPI.get_product_from_api.assert_called()
-        healthy_product = OpenFoodFactsAPI()
+        healthy_product = app.OpenFoodFactsAPI()
         self.assertEqual(healthy_product.count_product_numb("ferrero"), 2)

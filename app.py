@@ -8,9 +8,9 @@ import json
 class OpenFoodFactsAPI:
 
     def get_product_from_api(self, brand):
-    """
-    Get the first 150 products from Openfoodfacts API linked to a brand name
-    """
+        """
+        Get the first 150 products from Openfoodfacts API linked to a brand name
+        """
 
         payload = {
             'action' : 'process',
@@ -40,9 +40,9 @@ class OpenFoodFactsAPI:
             print('Reason: ', e.reason)
 
     def count_product_numb(self, brand):
-    """
-    Count all healthy products
-    """
+        """
+        Count all healthy products
+        """
         data = self.get_product_from_api(brand)
         healthy_product = 0
         for product in data["products"]:
