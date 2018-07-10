@@ -1,13 +1,12 @@
-import app
+from app import OpenFoodFactsAPI
 from unittest import TestCase
-from unittest.mock import patch
 
 class TestOpenFoodFactsAPI(TestCase):
+    
+    def test_count_product_numb(self):
 
-    @patch('app.OpenFoodFactsAPI.get_product_from_api')
-    def test_count_product_numb(self, mock_get_product_from_api):
-
-        mock_get_product_from_api.return_value = {
+        def fake_api_result(self):
+            result = {
             "count": 6,
             "skip": 0,
             "page_size": "150",
@@ -38,7 +37,10 @@ class TestOpenFoodFactsAPI(TestCase):
                     "nutrition_grade_fr": "c",
                 },
                 ]
-        }
+            }
+            return result
 
-        healthy_product = app.OpenFoodFactsAPI()
+        healthy_product = OpenFoodFactsAPI()
+        healthy_product.get_product_from_api = fake_api_result
+
         self.assertEqual(healthy_product.count_product_numb("ferrero"), 2)

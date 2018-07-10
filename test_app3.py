@@ -1,4 +1,4 @@
-import app
+from app import OpenFoodFactsAPI
 from unittest import TestCase
 from unittest.mock import patch
 
@@ -40,5 +40,5 @@ class TestOpenFoodFactsAPI(TestCase):
                 ]
         }
 
-        healthy_product = app.OpenFoodFactsAPI()
+        healthy_product = OpenFoodFactsAPI()
         self.assertEqual(healthy_product.count_product_numb("ferrero"), 2)
