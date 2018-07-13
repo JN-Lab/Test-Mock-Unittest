@@ -1,7 +1,5 @@
-"""
-Mise en place d'un test en mockant la méthode _get_product_from_api()
-en utilisant uniquement la caractère dynamique de Python ainsi que ces règmes de portées
-"""
+#! /usr/bin/env python3
+# coding: utf-8
 
 from app import OpenFoodFactsAPI
 from unittest import TestCase
@@ -9,6 +7,10 @@ from unittest import TestCase
 class TestOpenFoodFactsAPI(TestCase):
     
     def test_count_product_numb(self):
+        """
+        Mise en place d'un test en mockant la méthode _get_product_from_api()
+        en utilisant uniquement la caractère dynamique de Python ainsi que ces règmes de portées
+        """
 
         def fake_api_result(self):
             result = {

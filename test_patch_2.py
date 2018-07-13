@@ -1,7 +1,6 @@
-"""
-Mise en place d'un test en mockant la méthode _get_product_from_api()
-via le décorateur patch du module unittest.
-"""
+#! /usr/bin/env python3
+# coding: utf-8
+
 
 import app
 from unittest import TestCase
@@ -12,6 +11,10 @@ class TestOpenFoodFactsAPI(TestCase):
     @patch('app.json')
     @patch('app.urllib')
     def test_count_product_numb(self, mock_urllib, mock_json):
+        """
+        Mise en place d'un test en mockant la méthode _get_product_from_api()
+        via le décorateur patch du module unittest.
+        """
 
         mock_json.loads.return_value = {
             "count": 6,

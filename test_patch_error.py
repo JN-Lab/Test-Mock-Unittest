@@ -1,9 +1,5 @@
-"""
-Ce test ne sera pas validé!
-En effet, le périmètre du mock est bien trop large car il mocke l'ensemble
-de la classe au lieu de mocker uniquement la méthode _get_product_from_api.return_value()
-"""
-
+#! /usr/bin/env python3
+# coding: utf-8
 from app import OpenFoodFactsAPI
 from unittest import TestCase
 from unittest.mock import patch
@@ -12,6 +8,11 @@ class TestOpenFoodFactsAPI(TestCase):
 
     @patch('app.OpenFoodFactsAPI')
     def test_count_product_numb(self, mock_OpenFoodFactsAPI):
+        """
+        Ce test ne sera pas validé!
+        En effet, le périmètre du mock est bien trop large car il mocke l'ensemble
+        de la classe au lieu de mocker uniquement la méthode _get_product_from_api.return_value() 
+        """
 
         mock_OpenFoodFactsAPI.get_product_from_api.return_value = {
             "count": 6,

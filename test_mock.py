@@ -1,15 +1,15 @@
-"""
-Mise en place d'un test en mockant la méthode _get_product_from_api()
-via la classe Mock du module unittest
-"""
-
+#! /usr/bin/env python3
+# coding: utf-8
 from app import OpenFoodFactsAPI
 from unittest import TestCase
 from unittest.mock import Mock
 
 class TestOpenFoodFactsAPI(TestCase):
     def test_count_product_numb(self):
-
+        """
+        Mise en place d'un test en mockant la méthode _get_product_from_api()
+        via la classe Mock du module unittest
+        """
         api_response = {
             "count": 6,
             "skip": 0,
