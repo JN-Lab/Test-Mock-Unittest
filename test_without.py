@@ -1,11 +1,17 @@
+"""
+Mise en place d'un test en mockant la méthode _get_product_from_api()
+en utilisant uniquement la caractère dynamique de Python ainsi que ces règmes de portées
+"""
+
 from app import OpenFoodFactsAPI
 from unittest import TestCase
-from unittest.mock import Mock
 
 class TestOpenFoodFactsAPI(TestCase):
+    
     def test_count_product_numb(self):
 
-        api_response = {
+        def fake_api_result(self):
+            result = {
             "count": 6,
             "skip": 0,
             "page_size": "150",
@@ -36,10 +42,10 @@ class TestOpenFoodFactsAPI(TestCase):
                     "nutrition_grade_fr": "c",
                 },
                 ]
-        }
+            }
+            return result
 
         healthy_product = OpenFoodFactsAPI()
-        healthy_product.get_product_from_api = Mock()
-        healthy_product.get_product_from_api.return_value = api_response
+        healthy_product._get_product_from_api = fake_api_result
 
         self.assertEqual(healthy_product.count_product_numb("ferrero"), 2)

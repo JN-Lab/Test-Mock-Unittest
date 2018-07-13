@@ -6,10 +6,15 @@ import urllib.error
 import json
 
 class OpenFoodFactsAPI:
-
-    def get_product_from_api(self, brand):
+    """
+    Cette classe a pour objectif de récupérer les produits associée à une marque
+    via l'API d'OpenFoodFacts et de compter le nombre de produits ayant une bonne
+    note alimentaire.
+    """
+    def _get_product_from_api(self, brand):
         """
-        Get the first 150 products from Openfoodfacts API linked to a brand name
+        Cette méthode a pour objectif de récupérer les 150 premiers produits liés
+        à une marque via l'API OpenFoodFacts
         """
 
         payload = {
@@ -41,9 +46,11 @@ class OpenFoodFactsAPI:
 
     def count_product_numb(self, brand):
         """
-        Count all healthy products
+        Cette méthode a pour objectif de dénombrer le nombre de produits ayant
+        une bonne note alimentaire
+        Il s'agit de la méthode à tester pour cette exercice
         """
-        data = self.get_product_from_api(brand)
+        data = self._get_product_from_api(brand)
         healthy_product = 0
         for product in data["products"]:
             try:

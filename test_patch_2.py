@@ -1,13 +1,19 @@
+"""
+Mise en place d'un test en mockant la méthode _get_product_from_api()
+via le décorateur patch du module unittest.
+"""
+
 import app
 from unittest import TestCase
 from unittest.mock import patch
 
 class TestOpenFoodFactsAPI(TestCase):
 
-    @patch('app.OpenFoodFactsAPI.get_product_from_api')
-    def test_count_product_numb(self, mock_get_product_from_api):
+    @patch('app.json')
+    @patch('app.urllib')
+    def test_count_product_numb(self, mock_urllib, mock_json):
 
-        mock_get_product_from_api.return_value = {
+        mock_json.loads.return_value = {
             "count": 6,
             "skip": 0,
             "page_size": "150",

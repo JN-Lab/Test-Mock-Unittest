@@ -1,12 +1,19 @@
+"""
+Ce test ne sera pas validé!
+En effet, le périmètre du mock est bien trop large car il mocke l'ensemble
+de la classe au lieu de mocker uniquement la méthode _get_product_from_api.return_value()
+"""
+
 from app import OpenFoodFactsAPI
 from unittest import TestCase
+from unittest.mock import patch
 
 class TestOpenFoodFactsAPI(TestCase):
-    
-    def test_count_product_numb(self):
 
-        def fake_api_result(self):
-            result = {
+    @patch('app.OpenFoodFactsAPI')
+    def test_count_product_numb(self, mock_OpenFoodFactsAPI):
+
+        mock_OpenFoodFactsAPI.get_product_from_api.return_value = {
             "count": 6,
             "skip": 0,
             "page_size": "150",
@@ -37,10 +44,7 @@ class TestOpenFoodFactsAPI(TestCase):
                     "nutrition_grade_fr": "c",
                 },
                 ]
-            }
-            return result
+        }
 
         healthy_product = OpenFoodFactsAPI()
-        healthy_product.get_product_from_api = fake_api_result
-
         self.assertEqual(healthy_product.count_product_numb("ferrero"), 2)

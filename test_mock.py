@@ -1,14 +1,16 @@
-import app
+"""
+Mise en place d'un test en mockant la méthode _get_product_from_api()
+via la classe Mock du module unittest
+"""
+
+from app import OpenFoodFactsAPI
 from unittest import TestCase
-from unittest.mock import patch
+from unittest.mock import Mock
 
 class TestOpenFoodFactsAPI(TestCase):
+    def test_count_product_numb(self):
 
-    @patch('app.json')
-    @patch('app.urllib')
-    def test_count_product_numb(self, mock_urllib, mock_json):
-
-        mock_json.loads.return_value = {
+        api_response = {
             "count": 6,
             "skip": 0,
             "page_size": "150",
@@ -38,9 +40,10 @@ class TestOpenFoodFactsAPI(TestCase):
                     "product_name_fr" : "Ferrero à la fraise",
                     "nutrition_grade_fr": "c",
                 },
-                ]
+            ]
         }
 
-        #mock_OpenFoodFactsAPI.get_product_from_api.assert_called()
-        healthy_product = app.OpenFoodFactsAPI()
+        healthy_product = OpenFoodFactsAPI()
+        healthy_product._get_product_from_api = Mock(return_value=api_response)
+
         self.assertEqual(healthy_product.count_product_numb("ferrero"), 2)
